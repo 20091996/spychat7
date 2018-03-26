@@ -9,34 +9,43 @@ spy_name= spy_salutation + " " + spy_name #Variable re-assignment
 print('Alright ' + spy_name + '. I\'d like to know a little bit more about you.')
 
 ###############################################module 2##############################################
-spy_name=input("Welcome to spy chat, you must tell me your spy name first")
-if len(spy_name) >0:  #if is used for condition
-    #starting from here and seeing how this id under the if statement?
-   print('Welcome ' + spy_name + ',Glad to have u back with us.')
+spy_age = 0  # initializing age with 0
+spy_rating = 0.0# initializing rating with 0
+from spy_details import spy_name, spy_salutation,spy_age, spy_rating#importing file from spy_details.py
 
-   spy_salutation = input("Should i call u Mr. or Ms ?: ")
-
-   spy_name= spy_salutation + " " + spy_name
-
-   print('Alright ' + spy_name + '. I\'d like to know a little bit more about you.')
+question = "Continue as " + spy_salutation + " " + spy_name + "(Y/N)?" #to know if the spy is default user or not
+existing = input(question)
+if(existing=="Y"):
+    print("Welcome to spychat %s %s Age: %d Your rating:%f" % (spy_salutation, spy_name, spy_age, spy_rating))#print('Welcome to the spychat ' + spy_salutation +
 else:
-    print("A spy needs to have a valid name.try again please.")
-    spy_name=0 #initializing age with 0
-    spy_rating=0.0 #initializing rating with 0
-spy_age=int(input("What is your age?"))
-if spy_age >12 and spy_age <50:
-        spy_rating=int(input("What is your spy rating?"))
-else:
-        print('sorry you are not of the correct age to be a spy')
+    spy_name=input("Welcome to spy chat, you must tell me your spy name first: ")
+    if len(spy_name) > 0:
+        spy_salutation = input("Should i call u Mr. or Ms. ?: ")
+        spy_age = int(input("What is your age?"))
+        if spy_age > 12 and spy_age <50:
+            spy_rating=float(input("What is your spy rating?"))
 
-spy_rating=int(input("What is your spy rating?"))
+    else:
+       print('sorry you are not of the correct age to be a spy')
 if spy_rating > 4.5:
     print('Great ace!')
-elif spy_rating >3.5 and spy_rating <=4.5:
+elif spy_rating > 3.5 and spy_rating <= 4.5:
     print('You are one of the good ones.')
-elif spy_rating >2.5 and spy_rating <=3.5:
+elif spy_rating > 2.5 and spy_rating <= 3.5:
     print('You can always do better')
 else:
     print('We can always use somebody to help in the office.')
+    print("Welcome to spychat %s %s Age: %d Your rating:%f" % (spy_salutation, spy_name, spy_age, spy_rating))
+#print('Welcome to spychat '+ spy_salutation +' '+ spy_name + ' With age '+str(spy_age)+' and spy rating as '+ str(spy_rating)+'.')
 
-print('Welcome to spychat '+ spy_salutation +' '+ spy_name + ' With age '+str(spy_age)+' and spy rating as '+ str(spy_rating)+'.')
+
+def start_chat(spy_name,spy_age, spy_rating):
+    menu_choices = "What do you want to do? \n 1. Add a status update\n 2. Exit"
+    menu_choice = input(menu_choices)
+
+    if(menu_choice =='1'):
+        print('Add status')#Add status update
+    elif(menu_choice=='2'):
+        print('Exit')#Exit Application
+    else:
+        print('Choose another option')
