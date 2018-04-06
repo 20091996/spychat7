@@ -8,7 +8,7 @@ frnds_list = []
 print "Welcome To Spychat"
 
 def load_frnds():
-    with open("friends.csv", "a") as friends:
+    with open("friends.csv", "rU") as friends:
         reader = csv.reader(friends)
 
         for row in reader:
